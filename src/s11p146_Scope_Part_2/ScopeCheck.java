@@ -1,0 +1,51 @@
+package s11p146_Scope_Part_2;
+
+public class ScopeCheck {
+
+    public int publicVar = 0;
+    private int varOne = 1;
+
+
+    public ScopeCheck() {
+        System.out.println("ScopeCheck created. publicVar = " + publicVar + ":  privateVar = " + varOne);
+    }
+
+
+    public int getVarOne() {
+        return varOne;
+    }
+
+
+    public void timesTwo() {
+        int varTwo = 2;
+        for(int i = 0; i < 10; i++) {
+            System.out.println(i + " times two is " + i * varTwo);
+            System.out.println(i + " times two is " + i * this.varOne);
+        }
+    }
+
+
+    public void useInner() {
+        InnerClass innerClass = new InnerClass();
+        /* Use the InnerClass object type innerClass to retrieve the value of varThree.  */
+        System.out.println("varThree from outer class:  " + innerClass.varThree);
+    }
+
+
+    public class InnerClass {
+        /* ScopeCheck is the outer class of InnerClass, so ScopeCheck can access to InnerClass' private variables.  */
+        private int varThree = 3;
+
+        public InnerClass() {
+            System.out.println("InnerClass created, varOne is " + varOne + " and varThree is " + varThree);
+        }
+
+        public void timesTwo() {
+            System.out.println("varOne is still available here:  " + varOne);
+            for(int i = 0; i < 10; i++) {
+                System.out.println(i + " times two is " + i * varThree);
+            }
+        }
+    }
+
+}

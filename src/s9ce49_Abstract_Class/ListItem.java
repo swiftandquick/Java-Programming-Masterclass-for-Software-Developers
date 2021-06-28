@@ -1,0 +1,32 @@
+package s9ce49_Abstract_Class;
+
+public abstract class ListItem {
+
+    protected ListItem rightLink = null;
+    protected ListItem leftLink = null;
+    protected Object value;
+
+
+    public ListItem(Object value) {
+        this.value = value;
+    }
+
+
+    public Object getValue() {
+        return value;
+    }
+
+
+    public void setValue(Object value) {
+        this.value = value;
+    }
+
+
+    /* Abstract methods will be overridden in child class.  */
+    abstract ListItem next();
+    abstract ListItem setNext(ListItem item);
+    abstract ListItem previous();
+    abstract ListItem setPrevious(ListItem item);
+    abstract int compareTo(ListItem item);
+
+}
